@@ -1,0 +1,19 @@
+{
+  "name": "nftstorage",
+  "version": "1.0.0",
+  "description": "ok",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "mime": "^3.0.0",
+    "nft.storage": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/mime": "^3.0.1"
+  }
+}
