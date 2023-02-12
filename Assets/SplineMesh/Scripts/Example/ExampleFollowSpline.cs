@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+
 namespace SplineMesh
 {
     /// <summary>
@@ -19,8 +20,13 @@ namespace SplineMesh
         private GameObject generated;
         private Spline spline;
         private float rate = 0;
+        private float y = 1;
 
         public GameObject Follower;
+        public Transform TrainTransform;
+        //public Vector3 DefaultRotation;
+        //public Quarternion FlippedRotation;
+
         public float DurationInSecond;
 
         private void OnEnable()
@@ -44,14 +50,39 @@ namespace SplineMesh
 #endif
         }
 
+        void Start()
+        {
+            //DefaultRotation = TrainTransform.rotation;
+            //FlippedRotation = new Quarternion(TrainTransform.rotation.x,TrainTransform.rotation.y,TrainTransform.z + 180);
+        }
+
         void EditorUpdate()
         {
-            rate += Time.deltaTime / DurationInSecond;
-            if (rate > spline.nodes.Count - 1)
+            if (Input.GetKey("a"))
             {
-                rate -= spline.nodes.Count - 1;
+                if (DurationInSecond > 2)
+                {
+                    DurationInSecond = (DurationInSecond)*(1-(y/100));
+                }
+
             }
-            PlaceFollower();
+            if (Input.GetKey("d")) 
+            {
+                if (DurationInSecond < 150)
+                {
+                    DurationInSecond = (DurationInSecond) * (1 + (y / 100));
+                }
+            }
+            if (DurationInSecond < 150)
+            {
+                rate += Time.deltaTime / DurationInSecond;
+                if (rate > spline.nodes.Count - 1)
+                {
+                    rate -= spline.nodes.Count - 1;
+                }
+                PlaceFollower();
+            }
+
         }
 
         private void PlaceFollower()
