@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@imtbl/core-sdk": "^1.0.1"
+  }
+}

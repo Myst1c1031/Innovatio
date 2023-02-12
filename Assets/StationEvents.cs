@@ -24,6 +24,8 @@ public class StationEvents : MonoBehaviour
         
         passengerPercentage = 55;
         atTheStation = false;
+
+        //public int PeopleOnTheTrain;
     }
 
     void TrainIsHere(int percentage)
@@ -32,6 +34,7 @@ public class StationEvents : MonoBehaviour
         {
             atTheStation=true;
             Debug.Log("Train is at the station");
+            
             int movement = (int) Math.Round(Passengers * percentage / 100f);
             Passengers -= movement;
         }
